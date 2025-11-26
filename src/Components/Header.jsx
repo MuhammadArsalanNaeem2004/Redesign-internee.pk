@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import graduationCap from "../assets/graduationCap.png";
 import Btn from "./Btn";
 import { HiMenu, HiX } from "react-icons/hi";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   useEffect(() => {
@@ -12,20 +11,6 @@ function Header() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const goToSection = (id) => {
-    setMobileMenuOpen(false);
-
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
@@ -54,12 +39,6 @@ function Header() {
             <Link className="nav-link" to="/InstructorApp">
               Instructor
             </Link>
-            <button
-              onClick={() => goToSection("instructor")}
-              className="nav-link"
-            >
-              Teach
-            </button>
             <Link className="nav-link" to="/internshipapp">
               Internships
             </Link>
@@ -70,12 +49,12 @@ function Header() {
               Help
             </Link>
 
-            <Btn
-              className="px-6 py-2 rounded-lg bg-[#6366f1] text-white hover:bg-[#4f46e5] transition shadow-md"
-              onClick={() => navigate("/blog")}
+            <Link
+              to="/register"
+              className="bg-[#6366f1] text-white hover:bg-[#4f46e5] transition px-4  py-3 rounded-xl inline-block"
             >
               Get Started
-            </Btn>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -101,28 +80,21 @@ function Header() {
             >
               Home
             </Link>
-
-            <button
+            <Link
               className="mobile-link"
-              onClick={() => goToSection("internships")}
+              onClick={() => setMobileMenuOpen(false)}
+              to="/InstructorApp"
+            >
+              Instructor
+            </Link>
+
+            <Link
+              className="mobile-link"
+              onClick={() => setMobileMenuOpen(false)}
+              to="/internshipapp"
             >
               Internships
-            </button>
-
-            <button
-              className="mobile-link"
-              onClick={() => goToSection("tasks")}
-            >
-              Tasks
-            </button>
-
-            <button
-              className="mobile-link"
-              onClick={() => goToSection("instructor")}
-            >
-              Teach
-            </button>
-
+            </Link>
             <Link
               className="mobile-link"
               to="/blog"
@@ -131,16 +103,21 @@ function Header() {
               Blog
             </Link>
 
-            <Link className="mobile-link" to="/help">
+            <Link
+              className="mobile-link"
+              onClick={() => setMobileMenuOpen(false)}
+              to="/help"
+            >
               Help
             </Link>
 
-            <Btn
-              className="w-full py-3 rounded-lg bg-[#6366f1] text-white hover:bg-[#4f46e5] transition"
-              onClick={() => navigate("/blog")}
+            <Link
+              to="/register"
+              onClick={() => setMobileMenuOpen(false)}
+              className="bg-[#6366f1] text-white hover:bg-[#4f46e5] transition px-4  py-3 rounded-xl inline-block"
             >
               Get Started
-            </Btn>
+            </Link>
           </div>
         )}
       </nav>

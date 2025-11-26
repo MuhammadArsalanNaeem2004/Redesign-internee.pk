@@ -84,9 +84,9 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/help" className="hover:text-white transition-colors">
+                <Link to="/help" className="hover:text-white transition-colors">
                   Help Center
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -96,22 +96,30 @@ function Footer() {
             <div className="flex space-x-4">
               <a
                 href="https://www.facebook.com/internee.pk/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-[#6366f1] transition-colors"
               >
                 <div className="icon-facebook text-lg">
                   <FiFacebook />
                 </div>
               </a>
+
               <a
                 href="https://x.com/interneepk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-[#6366f1] transition-colors"
               >
                 <div className="icon-twitter text-lg">
                   <FiTwitter />
                 </div>
               </a>
+
               <a
                 href="https://www.linkedin.com/company/internee-pk/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-[#6366f1] transition-colors"
               >
                 <div className="icon-linkedin text-lg">
