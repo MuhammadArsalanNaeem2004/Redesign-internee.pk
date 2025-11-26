@@ -58,14 +58,6 @@ function Footer() {
                   Instructor
                 </Link>
               </li>
-              <li>
-                <a
-                  href="#instructor"
-                  className="hover:text-white transition-colors"
-                >
-                  Teach
-                </a>
-              </li>
             </ul>
           </div>
 
