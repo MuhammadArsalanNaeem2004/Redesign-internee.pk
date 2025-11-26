@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import graduationCap from "../assets/graduationCap.png";
 import Btn from "./Btn";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+
 function Header() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,79 +20,67 @@ function Header() {
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
-        const section = document.getElementById(id);
-        section?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 300);
     } else {
-      const section = document.getElementById(id);
-      section?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          {/* Logo */}
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img
               src={graduationCap}
               alt="Graduation Cap"
-              className="w-8 h-8 object-contain rounded-lg cursor-pointer"
-              onClick={() => navigate("/")}
+              className="w-9 h-9 object-contain rounded-lg"
             />
-            <span
-              className="text-2xl font-bold cursor-pointer text-[#6366f1]"
-              onClick={() => navigate("/")}
-            >
+            <span className="text-2xl font-bold text-[#6366f1]">
               Internee.pk
             </span>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-[#212a38] hover:text-[#6366f1]">
+          <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <Link className="nav-link" to="/">
               Home
             </Link>
-
-            <button
-              onClick={() => goToSection("internships")}
-              className="hover:text-[#6366f1]"
-            >
-              Internships
-            </button>
-
-            <button
-              onClick={() => goToSection("tasks")}
-              className="hover:text-[#6366f1]"
-            >
-              Tasks
-            </button>
-
+            <Link className="nav-link" to="/InstructorApp">
+              Instructor
+            </Link>
             <button
               onClick={() => goToSection("instructor")}
-              className="hover:text-[#6366f1]"
+              className="nav-link"
             >
               Teach
             </button>
-
-            <Link to="/blog" className="text-[#212a38] hover:text-[#6366f1]">
+            <Link className="nav-link" to="/internshipapp">
+              Internships
+            </Link>
+            <Link className="nav-link" to="/blog">
               Blog
             </Link>
-            <Link
-              to="/help"
-              className="text-[#212a38] hover:text-[#6366f1] transition"
-            >
+            <Link className="nav-link" to="/help">
               Help
             </Link>
 
-            <Btn className="text-lg" onClick={() => navigate("/blog")}>
+            <Btn
+              className="px-6 py-2 rounded-lg bg-[#6366f1] text-white hover:bg-[#4f46e5] transition shadow-md"
+              onClick={() => navigate("/blog")}
+            >
               Get Started
             </Btn>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Toggle */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -100,48 +93,52 @@ function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden pb-4 space-y-1 grid grid-cols-1">
+          <div className="md:hidden mt-3 bg-white rounded-xl shadow-lg p-4 space-y-3 animate-fade-in">
             <Link
-              className="hover:text-[#6366f1] "
+              className="mobile-link"
               to="/"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <div className="flex flex-col space-y-1 items-start">
-              <button
-                className="hover:text-[#6366f1] "
-                onClick={() => goToSection("internships")}
-              >
-                Internships
-              </button>
-              <button
-                className="hover:text-[#6366f1] "
-                onClick={() => goToSection("tasks")}
-              >
-                Tasks
-              </button>
-              <button
-                className="hover:text-[#6366f1] "
-                onClick={() => goToSection("instructor")}
-              >
-                Teach
-              </button>
-            </div>
+
+            <button
+              className="mobile-link"
+              onClick={() => goToSection("internships")}
+            >
+              Internships
+            </button>
+
+            <button
+              className="mobile-link"
+              onClick={() => goToSection("tasks")}
+            >
+              Tasks
+            </button>
+
+            <button
+              className="mobile-link"
+              onClick={() => goToSection("instructor")}
+            >
+              Teach
+            </button>
+
             <Link
-              className="hover:text-[#6366f1] "
+              className="mobile-link"
               to="/blog"
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
             </Link>
-            <Link
-              to="/help"
-              className="text-[#212a38] hover:text-[#6366f1] transition"
-            >
+
+            <Link className="mobile-link" to="/help">
               Help
             </Link>
-            <Btn className="text-lg" onClick={() => navigate("/blog")}>
+
+            <Btn
+              className="w-full py-3 rounded-lg bg-[#6366f1] text-white hover:bg-[#4f46e5] transition"
+              onClick={() => navigate("/blog")}
+            >
               Get Started
             </Btn>
           </div>

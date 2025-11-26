@@ -3,23 +3,9 @@ import { IoCodeSlashOutline } from "react-icons/io5";
 import { LuAward } from "react-icons/lu";
 import { FiGitBranch } from "react-icons/fi";
 import { FaCheck } from "react-icons/fa6";
-import Btn from "./Btn";
-import StartJourneyModal from "./StartJourneyModal";
+import { Link } from "react-router-dom";
 
 function TaskPortal() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [formData, setFormData] = React.useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your interest! We will contact you soon.");
-    setIsModalOpen(false);
-    setFormData({ name: "", email: "", phone: "" });
-  };
   const benefits = [
     {
       icon: <IoCodeSlashOutline />,
@@ -51,6 +37,7 @@ function TaskPortal() {
       features: ["Full lifecycle", "Best practices", "Real scenarios"],
     },
   ];
+
   return (
     <section
       id="tasks"
@@ -89,9 +76,9 @@ function TaskPortal() {
                     key={idx}
                     className="flex items-center text-sm text-[#6b7280]"
                   >
-                    <div className="text-sm text-green-600 mr-2">
+                    <span className="text-green-600 mr-2">
                       <FaCheck />
-                    </div>
+                    </span>
                     {feature}
                   </li>
                 ))}
@@ -100,67 +87,15 @@ function TaskPortal() {
           ))}
         </div>
 
+        {/* ✅ REDIRECT BUTTON */}
         <div className="text-center">
-          <Btn onClick={() => setIsModalOpen(true)} className="btn-primary">
+          <Link
+            to="/register"
+            className="bg-[#6366f1] text-white hover:bg-[#4f46e5] transition px-4  py-3 rounded-xl inline-block"
+          >
             Start Your Journey Now
-          </Btn>
+          </Link>
         </div>
-
-        <StartJourneyModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          title="Start Your Journey"
-        >
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-semibold mb-2">
-                Full Name
-              </label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                placeholder="Enter your name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-2">Email</label>
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-2">Phone</label>
-              <input
-                type="tel"
-                required
-                value={formData.phone}
-                onChange={(e) =>
-                  setFormData({ ...formData, phone: e.target.value })
-                }
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                placeholder="Enter your phone"
-              />
-            </div>
-
-            <Btn type="submit" className="btn-primary w-full">
-              Submit
-            </Btn>
-          </form>
-        </StartJourneyModal>
       </div>
     </section>
   );

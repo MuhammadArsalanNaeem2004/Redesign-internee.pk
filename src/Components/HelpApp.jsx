@@ -6,6 +6,9 @@ import FAQ from "./FAQ";
 import ContactSupp from "./ContactSupp";
 
 function HelpApp() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section
       className="min-h-screen bg-gray-50"

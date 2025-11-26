@@ -1,9 +1,11 @@
 import React from "react";
 import graduationCap from "../assets/graduationCap.png";
 import { FiFacebook, FiTwitter, FiLinkedin } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer
       className="bg-gray-900 text-gray-300 py-12"
@@ -19,7 +21,10 @@ function Footer() {
                 alt="Graduation Cap"
                 className="w-10 h-10 object-contain rounded-lg cursor-pointer"
               />
-              <span className="text-xl font-bold cursor-pointer text-white">
+              <span
+                className="text-2xl font-bold cursor-pointer text-[#fdfdfd]"
+                onClick={() => navigate("/")}
+              >
                 Internee.pk
               </span>
             </div>
@@ -33,25 +38,25 @@ function Footer() {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  to="/"
-                  className="hover:text-white transition-colors"
-                >
+                <Link to="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <a
-                  href="#internships"
+                <Link
+                  to="/internshipapp"
                   className="hover:text-white transition-colors"
                 >
                   Internships
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#tasks" className="hover:text-white transition-colors">
-                  Tasks
-                </a>
+                <Link
+                  to="/InstructorApp"
+                  className="hover:text-white transition-colors"
+                >
+                  Instructor
+                </Link>
               </li>
               <li>
                 <a
@@ -68,20 +73,13 @@ function Footer() {
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  to="/jobs"
-                  className="hover:text-white transition-colors"
-                >
+                <Link to="/jobs" className="hover:text-white transition-colors">
                   Jobs Portal
                 </Link>
               </li>
+              <li></li>
               <li>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className="hover:text-white transition-colors"
-                >
+                <Link to="/blog" className="hover:text-white transition-colors">
                   Blog
                 </Link>
               </li>

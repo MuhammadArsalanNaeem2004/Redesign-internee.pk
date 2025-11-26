@@ -11,6 +11,10 @@ import Footer from "./Components/Footer";
 import BlogApp from "./Components/BlogApp";
 import HelpApp from "./Components/HelpApp";
 import JobsApp from "./Components/JobsApp";
+import RegisterApp from "./Components/RegisterApp";
+import InternshipsApp from "./Components/InternshipsApp";
+// import InstructorForm from "./Components/InstructorForm";
+import InstructorApp from "./Components/InstructorApp";
 
 const Home = () => {
   return (
@@ -36,6 +40,9 @@ const App = () => {
           <Route path="/blog" element={<BlogApp />} />
           <Route path="/help" element={<HelpApp />} />
           <Route path="/jobs" element={<JobsApp />} />
+          <Route path="/register" element={<RegisterApp />} />
+          <Route path="/internshipapp" element={<InternshipsApp />} />
+          <Route path="/InstructorApp" element={<InstructorApp />} />
         </Routes>
       </main>
 

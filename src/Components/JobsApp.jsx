@@ -4,6 +4,9 @@ import JobFilters from "./JobFilters";
 import JobListings from "./JobListings";
 
 function JobsApp() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [filters, setFilters] = React.useState({
     location: "All",
     type: "All",

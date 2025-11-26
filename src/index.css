@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+.nav-link {
+  color: #212a38;
+  transition: 0.3s ease;
+}
+.nav-link:hover {
+  color: #6366f1;
+}
+
+.mobile-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #212a38;
+  transition: 0.3s ease;
+}
+.mobile-link:hover {
+  background: #f3f4f6;
+  color: #6366f1;
+}
+
+/* Smooth mobile animation */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

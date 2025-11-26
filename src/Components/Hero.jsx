@@ -1,8 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate} from "react-router-dom";
 import heroPic from "../assets/hero.jpg";
 
 function Hero() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   return (
     <section
@@ -37,10 +40,7 @@ function Hero() {
 
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => {
-                  const section = document.getElementById("internships");
-                  section?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={() => navigate("/internshipapp")}
                 className="px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-[#6366f1]
  transition"
               >

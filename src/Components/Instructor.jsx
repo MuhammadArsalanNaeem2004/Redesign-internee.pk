@@ -3,22 +3,12 @@ import { FiUpload, FiDollarSign } from "react-icons/fi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoTrendingUpOutline } from "react-icons/io5";
 import Btn from "./Btn";
-import StartJourneyModal from "./StartJourneyModal";
+import { useNavigate } from "react-router-dom";
+// import InstructorApp from "./InstructorApp";
+
 
 function Instructor() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [formData, setFormData] = React.useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your interest! We will contact you soon.");
-    setIsModalOpen(false);
-    setFormData({ name: "", email: "", phone: "" });
-  };
+  const navigate = useNavigate();
 
   const instructorBenefits = [
     {
@@ -62,68 +52,16 @@ function Instructor() {
             Create in Your Native Language & Start Earning
           </p>
           <div>
-            <Btn onClick={() => setIsModalOpen(true)} className="btn-primary">
+            {/* <Btn onClick={() => setIsModalOpen(true)} className="btn-primary">
+              Become an Instructor
+            </Btn> */}
+            <Btn
+              onClick={() => navigate("/InstructorApp")}
+              className="px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-[#6366f1]
+ transition"
+            >
               Become an Instructor
             </Btn>
-            <StartJourneyModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              title="Become An Instructor"
-            >
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Enter Your Full Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                    placeholder="Enter your name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Enter Your Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Enter Your Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#6366f1] focus:outline-none"
-                    placeholder="Enter your phone"
-                  />
-                </div>
-
-                <Btn type="submit" className="btn-primary w-full">
-                  Submit
-                </Btn>
-              </form>
-            </StartJourneyModal>
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
